@@ -19,6 +19,16 @@ const graficoParaDolar = new Chart(dolar, {
     },
 });
 
+async function conectaApiCotacaoMoedas() {
+    const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
+    const data = await response.json();
+    let tempo = geraHorario();
+    let valor = data.USDBRL.ask;
+    adicionarDados(graficoParaDolar, tempo, valor);
+    imprimeCotacao('Dólar', valor);
+}
+
+setInterval(() => conectaApiCotacaoMoedas(), 5000);
 
 function geraHorario() {
     const data = new Date();
@@ -35,11 +45,3 @@ function adicionarDados(grafico, legenda, dados) {
 }
 
 let workerDolar = new Worker('./js/workers/workerDolar.js');
-workerDolar.postMessage('usd');
-
-workerDolar.addEventListener('message', (evento) => {
-    let tempo = geraHorario();
-    let valor = evento.data.ask;
-    imprimeCotacao('Dólar', valor);
-    adicionarDados(graficoParaDolar, tempo, valor);
-});
