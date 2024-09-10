@@ -1,4 +1,3 @@
-import imprimeCotacao from "./imprimeCotacao.js";
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
@@ -22,15 +21,12 @@ const graficoParaDolar = new Chart(dolar, {
 async function conectaApiCotacaoMoedas() {
     const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
     const data = await response.json();
-    let tempo = geraHorario();
-    let valor = data.USDBRL.ask;
-    adicionarDados(graficoParaDolar, tempo, valor);
-    imprimeCotacao('Dólar', valor);
+    console.log(data);
 }
 
 setInterval(() => conectaApiCotacaoMoedas(), 5000);
 
-function geraHorario() {
+function geraData() {
     const data = new Date();
     return `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
 }
