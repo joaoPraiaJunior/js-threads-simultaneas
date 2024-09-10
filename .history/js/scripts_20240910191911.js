@@ -1,4 +1,3 @@
-import imprimeCotacao from "./imprimeCotacao.js";
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
@@ -25,7 +24,6 @@ async function conectaApiCotacaoMoedas() {
     let tempo = geraHorario();
     let valor = data.USDBRL.ask;
     adicionarDados(graficoParaDolar, tempo, valor);
-    imprimeCotacao('Dólar', valor);
 }
 
 setInterval(() => conectaApiCotacaoMoedas(), 5000);
