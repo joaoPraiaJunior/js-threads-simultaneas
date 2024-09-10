@@ -1,4 +1,4 @@
-import imprimeCotacao from "./imprimeCotacao.js";
+import imprimeCotacao from "./imprimeCotacao";
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
@@ -41,5 +41,4 @@ workerDolar.addEventListener('message', (evento) => {
     let tempo = geraHorario();
     let valor = evento.data.ask;
     imprimeCotacao('Dólar', valor);
-    adicionarDados(graficoParaDolar, tempo, valor);
 });

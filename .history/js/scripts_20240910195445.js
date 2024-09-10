@@ -1,4 +1,3 @@
-import imprimeCotacao from "./imprimeCotacao.js";
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
@@ -37,9 +36,7 @@ function adicionarDados(grafico, legenda, dados) {
 let workerDolar = new Worker('./js/workers/workerDolar.js');
 workerDolar.postMessage('usd');
 
-workerDolar.addEventListener('message', (evento) => {
-    let tempo = geraHorario();
-    let valor = evento.data.ask;
-    imprimeCotacao('Dólar', valor);
-    adicionarDados(graficoParaDolar, tempo, valor);
+addEventListener('message', () => {
+    conectaApiCotacaoMoedas();
+    setInterval(() => conectaApiCotacaoMoedas(), 5000);
 });
