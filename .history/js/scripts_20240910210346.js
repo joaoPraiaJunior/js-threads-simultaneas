@@ -1,4 +1,4 @@
-import escolherListaParaImprimirCotacao from './imprimeCotacao.js';
+import imprimeCotacao from "./imprimeCotacao.js";
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
@@ -54,7 +54,7 @@ workerDolar.postMessage('usd');
 workerDolar.addEventListener('message', (evento) => {
     let tempo = geraHorario();
     let valor = evento.data.ask;
-    escolherListaParaImprimirCotacao('Dólar', valor)
+    imprimeCotacao('Dólar', valor);
     adicionarDados(graficoParaDolar, tempo, valor);
 });
 
@@ -64,6 +64,6 @@ workerIene.postMessage('jpy');
 workerIene.addEventListener('message', (evento) => {
     let tempo = geraHorario();
     let valor = evento.data.ask;
-    escolherListaParaImprimirCotacao('Iene', valor)
+    imprimeCotacao('Iene', valor);
     adicionarDados(graficoParaIene, tempo, valor);
 });
