@@ -1,4 +1,4 @@
-import escolherListaParaImprimirCotacao from './imprimeCotacao.js';
+import escolherListaParaImprimirCotacao from './js/imprimeCotacao.js';
 
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',

@@ -1,5 +1,4 @@
-import escolherListaParaImprimirCotacao from './imprimeCotacao.js';
-
+import escolherListaParaImprimirCotacao from './helpers/escolherListaParaImprimirCotacao.js';
 const elementos = {
     dolar: '[data-js="grafico-dolar"]',
     iene: '[data-js="grafico-iene"]',
